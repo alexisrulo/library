@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: var(--letters);
+    font-family: sans-serif;
+    /* Colors */
+    --letters: #554444;
+    --nav-bg-color: #ff8855;
+    --hover-bg-color: #ff9999;
+    --bg-main: #d6e4b3
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+}
+
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0px 0px 5px -2px black;
+    border-bottom: 1px solid black;
+    height: 18vh;
+    font-size: 24px;
+    background-color: var(--nav-bg-color);
+
+}
+
+.login__button{
+    padding: 12px 24px;
+    border-radius: 0.5em;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.login__button:hover{
+    background-color: var(--hover-bg-color)
+}
+
+.main{
+    background-color: var(--bg-main);
+    height: 82vh;
+    display: flex;
+    
+}
+
+.add__button{
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    background-color: transparent;
+    padding: 16px 24px ;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 24px;
+}
+.add__button:hover{
+    background-color: var(--hover-bg-color)
+}

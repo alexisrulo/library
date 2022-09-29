@@ -2,11 +2,11 @@
     margin: 0;
     padding: 0;
     color: var(--letters);
-    font-family: sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     /* Colors */
     --letters: #554444;
-    --nav-bg-color: #ff8855;
-    --hover-bg-color: #ff9999;
+    --nav-bg-color: #eeeeee;
+    --hover-bg-color: #ccaa77;
     --bg-main: #d6e4b3
 }
 
@@ -22,7 +22,7 @@
     align-items: center;
     justify-content: space-around;
     box-shadow: 0px 0px 5px -2px black;
-    border-bottom: 1px solid black;
+    border-bottom: 0px solid black;
     height: 18vh;
     font-size: 24px;
     background-color: var(--nav-bg-color);
@@ -36,6 +36,7 @@
     font-size: 16px;
     background-color: transparent;
     cursor: pointer;
+    border: 2px solid var(--letters);
 }
 
 .login__button:hover{
@@ -46,6 +47,7 @@
     background-color: var(--bg-main);
     height: 82vh;
     display: flex;
+    flex-direction: column;
     
 }
 
@@ -59,6 +61,113 @@
     cursor: pointer;
     margin: 24px;
 }
+
 .add__button:hover{
     background-color: var(--hover-bg-color)
+}
+.books{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 350px));
+    gap: 15px;
+    background-color: var(--bg-main);
+}
+.book__card{
+    border-radius: 0.5em;
+    background-color: #ffdd99;
+    margin: 24px;
+    padding: 24px;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: 0px 0px 8px -3px black;
+}
+.boton{
+    padding: 16px;
+    border-radius: 0.5em;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+}
+.botonRead{
+    background-color: #ccaa77;
+}
+
+.botonNotRead{
+    background-color: #ff8855;
+}
+
+.addform{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    background-color: var(--bg-main);
+    gap: 16px;
+    padding: 24px;
+    border-radius: 0.5em;
+    border: 2px solid var(--letters);
+    margin: 24px auto;
+    font-size: 16px;
+}
+.addform div{
+    display: flex;
+    flex-direction: column;
+}
+.addform input{
+    background-color: var(--nav-bg-color);
+    border-radius: 0.5em;
+    height: 32px;
+    width: 94%;
+    padding: 0 3%;
+}
+
+#alreadyRead {
+    display: flex;
+    flex-direction: row;
+}
+
+#alreadyRead label {
+    position: relative;
+    padding-left: 24px;
+}
+[type="checkbox"] { 
+display: none;
+}
+[type="checkbox"]:checked + label:before {
+    border-color: red;
+    font-family: "Material Symbols Outlined";
+    content: '\e876';
+}
+
+
+[type="checkbox"] + label:before{
+    content: ' ';
+    border: solid 1px var(--letters);
+    border-radius: 3px;
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    left: 0px;
+    background-color: #eeeeee;
+}
+
+
+
+.buttonAdd{
+    margin: 0 auto;
+}
+.buttonAdd button{
+    padding: 8px;
+    width: 150px;
+    font-size: 16px;
+}
+
+.formshow{
+    position: absolute;
+    margin: 240px 35%;
+    top: 0;
+}
+
+.formhide{
+    display: none;
 }

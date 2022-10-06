@@ -1,6 +1,4 @@
 const books = document.querySelector(".books");
-const bookCard = document.createElement("div");
-bookCard.classList.add("book__card");
 const myLibrary = [];
 
 
@@ -13,62 +11,66 @@ function Book(title, autor, pages, read, index) {
 }
 
 function addANewBook(title, autor, pages, read) {
-  let book = new Book(title, autor, pages, read, (myLibrary.length));
-  myLibrary.push(book);
-  books.innerHTML = "";
-  displayBook();
+  let newBook = new Book(title, autor, pages, read, (myLibrary.length));
+  myLibrary.push(newBook);
+  addBookToLibrary(newBook.index);
 }
-console.log(myLibrary)
-// addANewBook("The Hobbit", "J.R.R Tolkien", 236, true);
-// addANewBook("Harry Potter", "JRR", 234, false);
 
-const topCard = document.createElement('div')
-const titleCard = document.createElement("h3");
-const deleteItem = document.createElement('div');
-const autorCard = document.createElement("p");
-const pagesCard = document.createElement("p");
-const readCard = document.createElement("button");
+function addBookToLibrary (index) {
+  
+    const bookToAdd = myLibrary[index]
 
-Book.prototype.displayBook = function () {
-  myLibrary.forEach((book) => {
-    bookCard.innerHTML = '';
+    const topCard = document.createElement('div')
+    const titleCard = document.createElement("h3");
+    const deleteItem = document.createElement('div');
+    const autorCard = document.createElement("p");
+    const pagesCard = document.createElement("p");
+    const readCard = document.createElement("button");
+    
+    titleCard.innerText = bookToAdd.title;
+    
+    deleteItem.classList.add('deleteButton-' + bookToAdd.index, 'deleteButton');
+    deleteItem.innerText = 'X'
 
     topCard.innerHTML = ''
     topCard.classList.add('topCard')
-
-    titleCard.innerText = book.title;
     topCard.appendChild(titleCard.cloneNode(true));
-
-    deleteItem.classList.add('deleteButton');
-    deleteItem.id = book.index;
-    deleteItem.innerText = 'X'
-    console.log(deleteItem)
-
     topCard.appendChild(deleteItem.cloneNode(true));
 
-    bookCard.appendChild(topCard.cloneNode(true));
-
-    autorCard.innerText = book.autor;
-    bookCard.appendChild(autorCard.cloneNode(true));
-
-    pagesCard.innerText = book.pages + " pages";
-    bookCard.appendChild(pagesCard.cloneNode(true));
-
-    readCard.classList.add(book.read ? "botonRead" : "botonNotRead", "boton");
-    readCard.innerText = book.read ? "already read" : "not read yet";
-    bookCard.appendChild(readCard.cloneNode(true));
+    autorCard.innerText = bookToAdd.autor;
     
+    pagesCard.innerText = bookToAdd.pages + " pages";
+    
+    readCard.classList.add(bookToAdd.read ? "botonRead" : "botonNotRead", 'boton-'+ bookToAdd.index, 'boton');
+    readCard.innerText = bookToAdd.read ? "Already read" : "Not read yet";
+    
+    const bookCard = document.createElement("div");
+    bookCard.classList.add("book__card", 'card-' + bookToAdd.index);
+    bookCard.appendChild(topCard);
+    bookCard.appendChild(autorCard);
+    bookCard.appendChild(pagesCard);
+    bookCard.appendChild(readCard);
     books.appendChild(bookCard.cloneNode(true));
-  });
-}
 
-function switchRead (){
-  if (addForm.classList.contains("formhide")) {
-    addForm.classList.remove("formhide");
-    addForm.classList.add("formshow");
+    const buttonDelete = document.querySelector('.deleteButton-' + bookToAdd.index)
+    buttonDelete.addEventListener('click', () => { deleteABook(bookToAdd.index) });
+
+    const cardChangeRead = document.querySelector('.boton-' + bookToAdd.index)
+    cardChangeRead.addEventListener('click', () => {
+      switchRead(cardChangeRead)
+    })
+    
+  };
+
+function switchRead (card){
+  if (card.classList.contains("botonNotRead")) {
+    card.classList.remove("botonNotRead");
+    card.classList.add("botonRead");
+    card.innerText = 'Already Read'
   } else {
-    addForm.classList.remove("formshow");
-    addForm.classList.add("formhide");
+    card.classList.remove("botonRead");
+    card.classList.add("botonNotRead");
+    card.innerText = 'Not read yet'
   }
 }
 function showHideForm() {
@@ -106,13 +108,10 @@ addButtonForm.addEventListener("click", () => {
   showHideForm()
 });
 
-
 function deleteABook(index){
-  myLibrary.splice(index, 1)
-  console.log('hi')
-}
 
-function deleteEvent(){
-const deleteButton = document.querySelectorAll('.deleteButton')
-deleteButton.forEach((button) => button.addEventListener('click', () => {deleteABook(button.id)}))
+  delete myLibrary[index];
+  const cardToDelete = document.querySelector('.card-' + index);
+  books.removeChild(cardToDelete);
+
 }

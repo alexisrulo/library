@@ -9,7 +9,9 @@
     --hover-bg-color: #ccaa77;
     --bg-main: #d6e4b3;
     --bg-card: #ffdd99;
+
 }
+
 
 .content{
     display: flex;
@@ -111,8 +113,8 @@
     padding: 24px;
     border-radius: 0.5em;
     border: 2px solid var(--letters);
-    margin: 24px auto;
-    font-size: 16px;
+    font-size: 1.2em;
+    
 }
 .addform div{
     display: flex;
@@ -169,14 +171,13 @@ display: none;
 
 .formshow{
     position: absolute;
-    margin: 240px 35%;
-    top: 0;
+    left: 0px;
+    top: 300px;
 }
 
 .formhide{
     display: none;
 }
-
 
 .deleteButton{
     border: none;
@@ -189,4 +190,15 @@ display: none;
 .topCard{
     display: flex;
     justify-content: space-between;
+}
+
+.blur{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.623);
+}
+
+.blurhide{
+    display: none;
 }

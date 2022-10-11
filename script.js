@@ -2,12 +2,14 @@ const books = document.querySelector(".books");
 const myLibrary = [];
 
 
-function Book(title, autor, pages, read, index) {
-  this.title = title;
-  this.autor = autor;
-  this.pages = pages;
-  this.read = read;
-  this.index = index;
+class Book {
+  constructor(title, autor, pages, read, index) {
+    this.title = title;
+    this.autor = autor;
+    this.pages = pages;
+    this.read = read;
+    this.index = index;
+  }
 }
 
 function addANewBook(title, autor, pages, read) {
@@ -53,11 +55,16 @@ function addBookToLibrary (index) {
     books.appendChild(bookCard.cloneNode(true));
 
     const buttonDelete = document.querySelector('.deleteButton-' + bookToAdd.index)
-    buttonDelete.addEventListener('click', () => { deleteABook(bookToAdd.index) });
+    buttonDelete.addEventListener('click', () => { 
+      
+      deleteABook(bookToAdd.index) 
+    });
 
     const cardChangeRead = document.querySelector('.boton-' + bookToAdd.index)
     cardChangeRead.addEventListener('click', () => {
+
       switchRead(cardChangeRead)
+
     })
     
   };
@@ -92,9 +99,9 @@ const authorForm = document.querySelector("#author");
 const pagesForm = document.querySelector("#pages");
 const readForm = document.querySelector("#read");
 
-const addButtonForm = document.querySelector(".addButtonForm");
 
-addButtonForm.addEventListener("click", () => {
+addForm.addEventListener("submit", () => {
+  
   addANewBook(
     titleForm.value,
     authorForm.value,

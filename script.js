@@ -81,26 +81,31 @@ function switchRead (card){
   }
 }
 function showHideForm() {
-  if (addForm.classList.contains("formhide")) {
-    addForm.classList.remove("formhide");
-    addForm.classList.add("formshow");
+  if (addForm.classList.contains('formhide')) {
+    backgroundBlur.classList.remove('blurhide')
+    addForm.classList.remove('formhide');
   } else {
-    addForm.classList.remove("formshow");
-    addForm.classList.add("formhide");
+    backgroundBlur.classList.add('blurhide')
+    addForm.classList.add('formhide');
   }
 };
 
-const addForm = document.querySelector(".form");
-const addBook = document.querySelector(".add__button");
-addBook.addEventListener("click", showHideForm);
-
-const titleForm = document.querySelector("#title");
-const authorForm = document.querySelector("#author");
-const pagesForm = document.querySelector("#pages");
-const readForm = document.querySelector("#read");
+const addForm = document.querySelector('.form');
+const addBook = document.querySelector('.add__button');
+const closeButton = document.querySelector('.closeButton')
+const backgroundBlur = document.querySelector('.blur')
 
 
-addForm.addEventListener("submit", () => {
+addBook.addEventListener('click', showHideForm);
+closeButton.addEventListener('click', showHideForm);
+
+const titleForm = document.querySelector('#title');
+const authorForm = document.querySelector('#author');
+const pagesForm = document.querySelector('#pages');
+const readForm = document.querySelector('#read');
+
+
+addForm.addEventListener('submit', () => {
   
   addANewBook(
     titleForm.value,
